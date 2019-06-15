@@ -1,5 +1,36 @@
 <resources>
     <string name="app_name">BMI Calculator Project</string>
+    <string name="centimeter">Centimeter</string>
+    <string name="value_1">1</string>
+    <string name="string_BMI">BMI</string>
+    <string name="weight">Weight</string>
+    <string name="default_result_value">28.8</string>
+    <string name="underweight">Underweight</string>
+    <string name="normal">Normal</string>
+    <string name="over_weight">Over weight</string>
+    <string name="title_bmi">BMI</string>
+    <string name="default_weight_value">60</string>
+    <string name="kilogram">Kilogram</string>
+    <string name="default_height_value">170</string>
+    <string name="height">Height</string>
+    <string name="key_7">7</string>
+    <string name="key_8">8</string>
+    <string name="key_9">9</string>
+    <string name="key_ac">AC</string>
+    <string name="key_4">4</string>
+    <string name="key_5">5</string>
+    <string name="key_6">6</string>
+    <string name="key_2">2</string>
+    <string name="key_3">3</string>
+    <string name="key_0">0</string>
+    <string name="key_decimal">.</string>
+    <string name="key_go">GO</string>
+    <string name="information">Information</string>
+    <string name="lower_limit_underweight">16.0</string>
+    <string name="upper_limit_underweight">18.5</string>
+    <string name="lower_limit_overweight">25.0</string>
+    <string name="upper_limit_overweight">40.0</string>
+    <string name="invalid_bmi">Invalid BMI! Please Check your input</string>
 
     <string-array name="Weight">
         <item>Kilogram</item>
