@@ -15,21 +15,21 @@
             android:layout_gravity="top|center"
             android:text="@string/title_bmi"
             android:textColor="@color/colorLightGrey"
-            android:textSize="25sp" />
+            android:textSize="@dimen/title_size" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:baselineAligned="false"
             android:orientation="horizontal"
-            android:weightSum="1"
-            android:baselineAligned="false">
+            android:weightSum="1">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="100dp"
                 android:layout_weight="0.5"
                 android:orientation="vertical"
-                android:layout_marginBottom="100dp"
                 android:weightSum="1">
 
                 <android.support.constraint.ConstraintLayout
@@ -46,16 +46,15 @@
                         android:layout_width="@dimen/match_constraint"
                         android:layout_height="@dimen/match_constraint"
                         android:layout_weight="0.5"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:onClick="onClick"
                         android:orientation="horizontal"
                         android:weightSum="2"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/guideline7"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:onClick="onClick"
-                        android:clickable="true"
-                        android:focusable="true"
-                        >
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
                             android:id="@+id/textView1"
@@ -92,14 +91,14 @@
                         android:layout_width="@dimen/match_constraint"
                         android:layout_height="@dimen/match_constraint"
                         android:layout_weight="0.5"
-                        android:weightSum="2"
-                        android:onClick="onClick"
                         android:clickable="true"
+                        android:focusable="true"
+                        android:onClick="onClick"
+                        android:weightSum="2"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/guideline7"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:focusable="true">
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
                             android:id="@+id/weight_entry"
@@ -127,8 +126,8 @@
                             android:textAlignment="textEnd"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/weight_entry" />
-
                     </android.support.constraint.ConstraintLayout>
+
                     <android.support.constraint.Guideline
                         android:id="@+id/guideline7"
                         android:layout_width="wrap_content"
@@ -144,8 +143,7 @@
                     android:background="@drawable/normal_button_border"
                     android:orientation="horizontal"
                     android:weightSum="2"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    >
+                    app:layout_constraintEnd_toEndOf="parent">
 
                     <android.support.constraint.Guideline
                         android:id="@+id/guideline11"
@@ -156,66 +154,62 @@
 
                     <android.support.constraint.ConstraintLayout
                         android:id="@+id/height_spinner_layout"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
+                        android:layout_width="@dimen/match_constraint"
+                        android:layout_height="@dimen/match_constraint"
                         android:layout_weight="0.5"
-                        android:weightSum="2"
-                        android:onClick="onClick"
                         android:clickable="true"
+                        android:focusable="true"
+                        android:onClick="onClick"
+                        android:weightSum="2"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/guideline11"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:focusable="true">
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
                             android:id="@+id/textView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"
-                            android:paddingLeft="10dp"
-                            android:paddingTop="10dp"
-                            android:paddingRight="10dp"
-                            android:paddingBottom="10dp"
+                            android:layout_marginTop="@dimen/margin_top"
+                            android:layout_marginBottom="@dimen/margin_Bottom"
+                            android:paddingStart="@dimen/padding_left_10dp"
+                            android:paddingTop="@dimen/padding_top_10dp"
+                            android:paddingEnd="@dimen/padding_right_10dp"
+                            android:paddingBottom="@dimen/padding_bottom_10dp"
                             android:text="@string/height"
                             android:textColor="@color/colorBlack"
-                            android:textSize="15sp"
+                            android:textSize="@dimen/text_size_height"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.511" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <Spinner
                             android:id="@+id/height_spinner"
-                            android:layout_width="27dp"
-                            android:layout_height="27dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"
+                            android:layout_width="@dimen/spinner_width"
+                            android:layout_height="@dimen/spinner_height"
+                            android:layout_marginTop="@dimen/margin_top"
+                            android:layout_marginBottom="@dimen/margin_Bottom"
                             android:entries="@array/Height"
                             android:spinnerMode="dialog"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/textView"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.511" />
-
-
+                            app:layout_constraintTop_toTopOf="parent" />
                     </android.support.constraint.ConstraintLayout>
 
                     <android.support.constraint.ConstraintLayout
                         android:id="@+id/height_entry_layout"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
+                        android:layout_width="@dimen/match_constraint"
+                        android:layout_height="@dimen/match_constraint"
                         android:layout_weight="0.5"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:onClick="onClick"
                         android:orientation="horizontal"
                         android:weightSum="2"
-                        android:onClick="onClick"
-                        android:clickable="true"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/guideline11"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:focusable="true">
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
                             android:id="@+id/height_entry"
@@ -232,8 +226,7 @@
                             android:textSize="@dimen/height_entry_text_size"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/height_scale_view"
@@ -246,7 +239,6 @@
                             app:layout_constraintTop_toBottomOf="@+id/height_entry" />
                     </android.support.constraint.ConstraintLayout>
                 </android.support.constraint.ConstraintLayout>
-
             </LinearLayout>
 
             <LinearLayout
@@ -281,12 +273,11 @@
                             android:layout_weight="0.25"
                             android:background="@drawable/normal_button_border"
                             android:backgroundTint="@drawable/button_selector"
-                            android:text="@string/key_7"
+                            android:clickable="true"
                             android:focusable="true"
                             android:focusableInTouchMode="true"
-                            android:clickable="true"
                             android:onClick="onClick"
-                            />
+                            android:text="@string/key_7" />
 
                         <TextView
                             android:id="@+id/btn_8"
@@ -296,10 +287,10 @@
                             android:layout_weight="0.25"
                             android:background="@drawable/normal_button_border"
                             android:backgroundTint="@drawable/button_selector"
-                            android:text="@string/key_8"
                             android:clickable="true"
+                            android:focusable="true"
                             android:onClick="onClick"
-                            android:focusable="true" />
+                            android:text="@string/key_8" />
 
                         <TextView
                             android:id="@+id/btn_9"
@@ -309,10 +300,10 @@
                             android:layout_weight="0.25"
                             android:background="@drawable/normal_button_border"
                             android:backgroundTint="@drawable/button_selector"
-                            android:text="@string/key_9"
                             android:clickable="true"
+                            android:focusable="true"
                             android:onClick="onClick"
-                            android:focusable="true" />
+                            android:text="@string/key_9" />
 
                         <TextView
                             android:id="@+id/btn_all_clear"
@@ -321,13 +312,13 @@
                             android:layout_height="match_parent"
                             android:layout_weight="0.25"
                             android:background="@drawable/normal_button_border"
-                            android:text="@string/key_ac"
                             android:backgroundTint="@drawable/button_selector"
-                            android:textColor="@color/colorOrange"
-                            android:textSize="@dimen/btn_ac_text_size"
                             android:clickable="true"
+                            android:focusable="true"
                             android:onClick="onClick"
-                            android:focusable="true" />
+                            android:text="@string/key_ac"
+                            android:textColor="@color/colorOrange"
+                            android:textSize="@dimen/btn_ac_text_size" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -343,11 +334,11 @@
                             android:layout_height="match_parent"
                             android:layout_weight="0.25"
                             android:background="@drawable/normal_button_border"
-                            android:text="@string/key_4"
                             android:backgroundTint="@drawable/button_selector"
                             android:clickable="true"
+                            android:focusable="true"
                             android:onClick="onClick"
-                            android:focusable="true" />
+                            android:text="@string/key_4" />
 
                         <TextView
                             android:id="@+id/btn_5"
@@ -356,11 +347,11 @@
                             android:layout_height="match_parent"
                             android:layout_weight="0.25"
                             android:background="@drawable/normal_button_border"
-                            android:text="@string/key_5"
                             android:backgroundTint="@drawable/button_selector"
                             android:clickable="true"
+                            android:focusable="true"
                             android:onClick="onClick"
-                            android:focusable="true" />
+                            android:text="@string/key_5" />
 
                         <TextView
                             android:id="@+id/btn_6"
@@ -369,11 +360,11 @@
                             android:layout_height="match_parent"
                             android:layout_weight="0.25"
                             android:background="@drawable/normal_button_border"
-                            android:text="@string/key_6"
                             android:backgroundTint="@drawable/button_selector"
                             android:clickable="true"
+                            android:focusable="true"
                             android:onClick="onClick"
-                            android:focusable="true" />
+                            android:text="@string/key_6" />
 
                         <ImageButton
                             android:id="@+id/btn_back_space"
@@ -381,12 +372,12 @@
                             android:layout_height="match_parent"
                             android:layout_weight="0.25"
                             android:background="@color/colorWhite"
-                            android:src="@drawable/ic_tag_with_cancel"
-                            android:clickable="true"
                             android:backgroundTint="@drawable/button_selector"
-                            android:onClick="onClick"
+                            android:clickable="true"
+                            android:contentDescription="@string/back_space"
                             android:focusable="true"
-                            android:contentDescription="@string/back_space" />
+                            android:onClick="onClick"
+                            android:src="@drawable/ic_tag_with_cancel" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -395,9 +386,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="0.50"
+                    android:baselineAligned="false"
                     android:orientation="horizontal"
-                    android:weightSum="1"
-                    android:baselineAligned="false">
+                    android:weightSum="1">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -409,8 +400,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="0.5"
-                            android:weightSum="3"
                             android:orientation="horizontal"
+                            android:weightSum="3"
                             tools:ignore="NestedWeights">
 
                             <TextView
@@ -419,12 +410,12 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:backgroundTint="@drawable/button_selector"
                                 android:background="@drawable/normal_button_border"
-                                android:text="@string/value_1"
+                                android:backgroundTint="@drawable/button_selector"
                                 android:clickable="true"
+                                android:focusable="true"
                                 android:onClick="onClick"
-                                android:focusable="true" />
+                                android:text="@string/value_1" />
 
                             <TextView
                                 android:id="@+id/btn_2"
@@ -433,11 +424,11 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:background="@drawable/normal_button_border"
-                                android:text="@string/key_2"
                                 android:backgroundTint="@drawable/button_selector"
                                 android:clickable="true"
+                                android:focusable="true"
                                 android:onClick="onClick"
-                                android:focusable="true" />
+                                android:text="@string/key_2" />
 
                             <TextView
                                 android:id="@+id/btn_3"
@@ -446,12 +437,11 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:background="@drawable/normal_button_border"
-                                android:text="@string/key_3"
                                 android:backgroundTint="@drawable/button_selector"
                                 android:clickable="true"
+                                android:focusable="true"
                                 android:onClick="onClick"
-                                android:focusable="true" />
-
+                                android:text="@string/key_3" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -459,9 +449,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="0.5"
                             android:orientation="horizontal"
-                            android:weightSum="3"
-
-                            >
+                            android:weightSum="3">
 
                             <TextView
                                 android:id="@+id/btn_0"
@@ -470,24 +458,24 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:background="@drawable/normal_button_border"
-                                android:text="@string/key_0"
                                 android:backgroundTint="@drawable/button_selector"
                                 android:clickable="true"
+                                android:focusable="true"
                                 android:onClick="onClick"
-                                android:focusable="true" />
+                                android:text="@string/key_0" />
 
                             <TextView
                                 android:id="@+id/btn_decimal"
-                                android:clickable="true"
                                 style="@style/num_buttons_style"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_weight="2"
                                 android:background="@drawable/normal_button_border"
                                 android:backgroundTint="@drawable/button_selector"
-                                android:text="@string/key_decimal"
+                                android:clickable="true"
+                                android:focusable="true"
                                 android:onClick="onClick"
-                                android:focusable="true" />
+                                android:text="@string/key_decimal" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -502,14 +490,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/colorOrange"
-                            android:gravity="center"
-                            android:text="@string/key_go"
                             android:backgroundTint="@drawable/go_buttonselector"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="@dimen/textSize_20sp"
                             android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center"
                             android:onClick="onClick"
-                            android:focusable="true" />
+                            android:text="@string/key_go"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/textSize_20sp" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -607,7 +595,6 @@
                         android:textSize="12sp"
                         app:layout_constraintBottom_toTopOf="@+id/textView6"
                         app:layout_constraintEnd_toEndOf="@+id/textView4"
-                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@+id/result_text" />
 
                     <View
@@ -624,8 +611,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/textView7"
@@ -733,26 +719,6 @@
                         android:textSize="@dimen/text_size_12sp"
                         app:layout_constraintStart_toStartOf="@+id/textView8"
                         app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-                    <android.support.constraint.Guideline
-                        android:id="@+id/guideline8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.25" />
-
-                    <android.support.constraint.Guideline
-                        android:id="@+id/guideline9"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.5" />
-                    <android.support.constraint.Guideline
-                        android:id="@+id/guideline10"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.75" />
                 </android.support.constraint.ConstraintLayout>
             </LinearLayout>
         </LinearLayout>

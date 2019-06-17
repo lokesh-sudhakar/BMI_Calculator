@@ -38,4 +38,5 @@
     <dimen name="margin_right_20dp">20dp</dimen>
     <dimen name="bmi_textsize">32sp</dimen>
     <dimen name="elevation">10dp</dimen>
+    <dimen name="text_size_height">15sp</dimen>
 </resources>
