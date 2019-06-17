@@ -31,6 +31,7 @@
     <string name="lower_limit_overweight">25.0</string>
     <string name="upper_limit_overweight">40.0</string>
     <string name="invalid_bmi">Invalid BMI! Please Check your input</string>
+    <string name="back_space">back space</string>
 
     <string-array name="Weight">
         <item>Kilogram</item>

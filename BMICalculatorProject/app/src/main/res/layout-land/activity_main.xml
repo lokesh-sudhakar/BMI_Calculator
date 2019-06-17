@@ -14,20 +14,22 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top|center"
             android:text="@string/title_bmi"
-            android:textColor="@color/colorDarkGrey"
-            android:textSize="@dimen/title_size" />
+            android:textColor="@color/colorLightGrey"
+            android:textSize="25sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="1">
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.7"
+                android:layout_weight="0.5"
                 android:orientation="vertical"
+                android:layout_marginBottom="100dp"
                 android:weightSum="1">
 
                 <android.support.constraint.ConstraintLayout
@@ -76,8 +78,8 @@
                             android:id="@+id/weight_spinner"
                             android:layout_width="@dimen/spinner_width"
                             android:layout_height="@dimen/spinner_height"
-                            android:layout_marginTop="@dimen/margin_top"
-                            android:layout_marginBottom="@dimen/margin_Bottom"
+                            android:layout_marginTop="@dimen/_8dp"
+                            android:layout_marginBottom="@dimen/_8dp"
                             android:entries="@array/Weight"
                             android:spinnerMode="dialog"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -114,8 +116,7 @@
                             android:textSize="@dimen/weight_entry_text_size"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/weight_scale_view"
@@ -126,7 +127,6 @@
                             android:textAlignment="textEnd"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/weight_entry" />
-
 
                     </android.support.constraint.ConstraintLayout>
                     <android.support.constraint.Guideline
@@ -144,7 +144,8 @@
                     android:background="@drawable/normal_button_border"
                     android:orientation="horizontal"
                     android:weightSum="2"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    app:layout_constraintEnd_toEndOf="parent"
+                    >
 
                     <android.support.constraint.Guideline
                         android:id="@+id/guideline11"
@@ -155,8 +156,8 @@
 
                     <android.support.constraint.ConstraintLayout
                         android:id="@+id/height_spinner_layout"
-                        android:layout_width="@dimen/match_constraint"
-                        android:layout_height="@dimen/match_constraint"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
                         android:layout_weight="0.5"
                         android:weightSum="2"
                         android:onClick="onClick"
@@ -171,38 +172,40 @@
                             android:id="@+id/textView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_top"
-                            android:layout_marginBottom="@dimen/margin_Bottom"
-                            android:paddingStart="@dimen/padding_left_10dp"
-                            android:paddingTop="@dimen/padding_top_10dp"
-                            android:paddingEnd="@dimen/padding_right_10dp"
-                            android:paddingBottom="@dimen/padding_bottom_10dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingRight="10dp"
+                            android:paddingBottom="10dp"
                             android:text="@string/height"
                             android:textColor="@color/colorBlack"
-                            android:textSize="@dimen/text_size_weight"
+                            android:textSize="15sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.511" />
 
                         <Spinner
                             android:id="@+id/height_spinner"
-                            android:layout_width="@dimen/spinner_width"
-                            android:layout_height="@dimen/spinner_height"
-                            android:layout_marginTop="@dimen/margin_top"
-                            android:layout_marginBottom="@dimen/margin_Bottom"
+                            android:layout_width="27dp"
+                            android:layout_height="27dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
                             android:entries="@array/Height"
                             android:spinnerMode="dialog"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/textView"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.511" />
 
 
                     </android.support.constraint.ConstraintLayout>
 
                     <android.support.constraint.ConstraintLayout
                         android:id="@+id/height_entry_layout"
-                        android:layout_width="@dimen/match_constraint"
-                        android:layout_height="@dimen/match_constraint"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
                         android:layout_weight="0.5"
                         android:orientation="horizontal"
                         android:weightSum="2"
@@ -220,7 +223,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/margin_top"
                             android:layout_marginEnd="@dimen/margin_end"
-                            android:layout_marginBottom="8dp"
+                            android:layout_marginBottom="@dimen/margin_Bottom"
                             android:keepScreenOn="false"
                             android:onClick="onClick"
                             android:text="@string/default_height_value"
@@ -229,7 +232,8 @@
                             android:textSize="@dimen/height_entry_text_size"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            />
 
                         <TextView
                             android:id="@+id/height_scale_view"
@@ -250,8 +254,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="top"
-                android:layout_marginTop="@dimen/margin_top_100p"
-                android:layout_weight="0.3"
+                android:layout_weight="0.5"
                 android:orientation="vertical"
                 android:visibility="visible"
                 android:weightSum="1">
@@ -515,16 +518,12 @@
                 android:id="@+id/result_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.3"
+                android:layout_weight="0.5"
                 android:visibility="gone">
 
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/margin_left_20dp"
-                    android:layout_marginTop="@dimen/margin_top_20dp"
-                    android:layout_marginRight="@dimen/margin_right_20dp"
-                    android:layout_marginBottom="@dimen/margin_bottom_60dp"
                     android:background="@drawable/normal_button_border">
 
 
@@ -536,13 +535,11 @@
                         android:layout_marginEnd="@dimen/margin_end_8dp"
                         android:layout_marginBottom="@dimen/margin_bottom_60dp"
                         android:background="@color/colorOrange"
-                        android:text=""
+                        android:onClick="onClick"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.916"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:onClick="onClick"
-                        />
+                        app:layout_constraintHorizontal_bias="0.93"
+                        app:layout_constraintStart_toStartOf="parent" />
 
                     <TextView
                         android:id="@+id/textView9"
@@ -552,13 +549,12 @@
                         android:layout_marginEnd="@dimen/margin_end_8dp"
                         android:layout_marginBottom="@dimen/margin_bottom_60dp"
                         android:background="@color/colorBlue"
+                        android:onClick="onClick"
                         android:text=""
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.08"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:onClick="onClick"
-                        />
+                        app:layout_constraintStart_toStartOf="parent" />
 
                     <TextView
                         android:id="@+id/textView8"
@@ -571,7 +567,7 @@
                         android:text=""
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"/>
+                        app:layout_constraintStart_toStartOf="parent" />
 
                     <TextView
                         android:id="@+id/result_text"
@@ -594,7 +590,7 @@
                         android:layout_marginBottom="@dimen/margin_bottom_4dp"
                         android:text="@string/string_BMI"
                         android:textColor="@color/colorLightGrey"
-                        android:textSize="@dimen/bmi_textsize"
+                        android:textSize="@dimen/bmi_text_size"
                         app:layout_constraintBottom_toTopOf="@+id/bmi_status_view"
                         app:layout_constraintStart_toEndOf="@+id/result_text" />
 
@@ -608,7 +604,7 @@
                         android:gravity="center"
                         android:text="@string/normal"
                         android:textColor="@color/colorGreen"
-                        android:textSize="@dimen/text_size_12sp"
+                        android:textSize="12sp"
                         app:layout_constraintBottom_toTopOf="@+id/textView6"
                         app:layout_constraintEnd_toEndOf="@+id/textView4"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -623,23 +619,24 @@
                         android:layout_marginEnd="@dimen/margin_end_8dp"
                         android:layout_marginBottom="@dimen/margin_Bottom"
                         android:background="@color/colorLightGrey"
+                        android:elevation="@dimen/base_line_elevation"
                         android:text=""
-                        android:elevation="@dimen/elevation"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
 
                     <TextView
                         android:id="@+id/textView7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
+                        android:layout_marginStart="@dimen/margin_start"
+                        android:layout_marginTop="@dimen/margin_top"
+                        android:layout_marginEnd="@dimen/margin_end_8dp"
+                        android:layout_marginBottom="@dimen/margin_Bottom"
                         android:text="@string/information"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/information_text_size"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.498"
@@ -670,7 +667,7 @@
                         android:layout_marginEnd="@dimen/margin_end_8dp"
                         android:layout_marginBottom="@dimen/margin_Bottom"
                         android:text="@string/normal"
-                        android:textColor="@color/colorGreen"
+                        android:textColor="#008000"
                         android:textSize="@dimen/text_size_12sp"
                         app:layout_constraintBottom_toTopOf="@+id/textView8"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -683,7 +680,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_start"
                         android:layout_marginEnd="@dimen/margin_end_8dp"
-                        android:layout_marginBottom="@dimen/margin_end_8dp"
+                        android:layout_marginBottom="@dimen/margin_Bottom"
                         android:text="@string/over_weight"
                         android:textColor="@color/colorOrange"
                         android:textSize="@dimen/text_size_12sp"
@@ -694,7 +691,7 @@
 
                     <TextView
                         android:id="@+id/textView14"
-                        android:layout_width="25dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="17dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="4dp"
@@ -710,10 +707,10 @@
                         android:id="@+id/textView15"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_top_4dp"
-                        android:layout_marginEnd="@dimen/margin_end"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="24dp"
                         android:text="@string/upper_limit_overweight"
-                        android:textSize="@dimen/text_size_12sp"
+                        android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/overweight_line" />
 
@@ -721,9 +718,9 @@
                         android:id="@+id/textView16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_top_4dp"
+                        android:layout_marginTop="4dp"
                         android:text="@string/lower_limit_overweight"
-                        android:textSize="@dimen/text_size_12sp"
+                        android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="@+id/textView8"
                         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
@@ -736,6 +733,26 @@
                         android:textSize="@dimen/text_size_12sp"
                         app:layout_constraintStart_toStartOf="@+id/textView8"
                         app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+                    <android.support.constraint.Guideline
+                        android:id="@+id/guideline8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.25" />
+
+                    <android.support.constraint.Guideline
+                        android:id="@+id/guideline9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.5" />
+                    <android.support.constraint.Guideline
+                        android:id="@+id/guideline10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.75" />
                 </android.support.constraint.ConstraintLayout>
             </LinearLayout>
         </LinearLayout>

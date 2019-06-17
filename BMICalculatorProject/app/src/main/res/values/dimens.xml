@@ -1,4 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <dimen name="result_dim">70sp</dimen>
+    <dimen name="match_constraint">0dp</dimen>
+    <dimen name="padding_bottom_10dp">10dp</dimen>
+    <dimen name="padding_right_10dp">10dp</dimen>
+    <dimen name="padding_left_10dp">10dp</dimen>
+    <dimen name="padding_top_10dp">10dp</dimen>
+    <dimen name="spinner_height">27dp</dimen>
+    <dimen name="spinner_width">27dp</dimen>
+    <dimen name="_8dp">8dp</dimen>
+    <dimen name="margin_top">8dp</dimen>
+    <dimen name="margin_Bottom">8dp</dimen>
+    <dimen name="margin_end">24dp</dimen>
+    <dimen name="weight_entry_text_size">28sp</dimen>
+    <dimen name="height_entry_text_size">28sp</dimen>
+    <dimen name="text_size_weight">15sp</dimen>
+    <dimen name="btn_ac_text_size">25sp</dimen>
+    <dimen name="scale_line_width">105dp</dimen>
+    <dimen name="scale_line_height">4dp</dimen>
+    <dimen name="margin_start">8dp</dimen>
+    <dimen name="margin_end_8dp">8dp</dimen>
+    <dimen name="margin_bottom_60dp">60dp</dimen>
+    <dimen name="margin_bottom_4dp">4dp</dimen>
+    <dimen name="bmi_text_size">32sp</dimen>
+    <dimen name="margin_bottom_16dp">16dp</dimen>
+    <dimen name="base_line_width">240dp</dimen>
+    <dimen name="base_line_elevation">10dp</dimen>
+    <dimen name="information_text_size">20sp</dimen>
+    <dimen name="text_size_12sp">12sp</dimen>
+    <dimen name="margin_top_4dp">4dp</dimen>
+    <dimen name="textSize_20sp">20sp</dimen>
+    <dimen name="title_size">25sp</dimen>
+    <dimen name="margin_top_100p">100dp</dimen>
+    <dimen name="margin_left_20dp">20dp</dimen>
+    <dimen name="margin_top_20dp">20dp</dimen>
+    <dimen name="margin_right_20dp">20dp</dimen>
+    <dimen name="bmi_textsize">32sp</dimen>
+    <dimen name="elevation">10dp</dimen>
 </resources>
