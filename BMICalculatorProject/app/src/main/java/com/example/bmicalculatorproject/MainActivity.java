@@ -57,8 +57,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean isWeightEntryClickedFirstTime;
 
     ActivityMainBinding mBinding;
-    String[] weightScale = getResources().getStringArray(R.array.Weight);
-    String[] heightScale = getResources().getStringArray(R.array.Height);
+    String[] weightScale = {"Kilogram","Pound"};
+    String[] heightScale = {"Centimeter","Meter","Feet","Inch"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +67,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        initView();
+        ArrayAdapter<CharSequence> adapterHeight = ArrayAdapter.createFromResource(this,
+                R.array.Height, android.R.layout.simple_spinner_item);
+        adapterHeight.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mBinding.weightSpinner.setAdapter(adapterHeight);
+
+        ArrayAdapter<CharSequence> adapterWeight = ArrayAdapter.createFromResource(this,
+                R.array.Weight, android.R.layout.simple_spinner_item);
+        adapterWeight.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mBinding.weightSpinner.setAdapter(adapterWeight);
+
+        mBinding.weightSpinner.setOnItemSelectedListener(this);
+        mBinding.heightSpinner.setOnItemSelectedListener(this);
 
         if (savedInstanceState != null) {
             mBinding.weightEntry.setText(savedInstanceState.getString(WEIGHT_VALUE));
@@ -162,8 +173,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mBinding.resultView.setVisibility(View.GONE);
                 if (isHeightEntryActive()) {
                     mBinding.heightEntry.setText(ZERO);
-                }
-                if (isWeightEntryActive()) {
+                }else if(isWeightEntryActive()) {
                     mBinding.weightEntry.setText(ZERO);
                 }
                 break;
@@ -305,7 +315,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @SuppressLint("SetTextI18n")
     public boolean performActionOn(TextView view, String number, boolean isTextViewClickedFirstTime) {
         String previousNumber = (String) view.getText();
-        if (view.getText() == ZERO || view.getText() == "" || isTextViewClickedFirstTime) {
+        if (view.getText().equals(ZERO) || view.getText().equals("") || isTextViewClickedFirstTime) {
             isTextViewClickedFirstTime = false;
             view.setText(number);
         } else if (previousNumber.contains(DECIMAL)) {
