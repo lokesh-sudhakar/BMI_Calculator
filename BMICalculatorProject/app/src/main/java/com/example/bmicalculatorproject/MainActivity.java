@@ -48,14 +48,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String WEIGHT_ENTRY_COLOR = "weight_entry_color";
     private static final String ZERO = "0";
     private static final String DECIMAL = ".";
-
-    ActivityMainBinding mBinding;
-    String[] weightScale = {"Kilogram", "Pound"};
-    String[] heightScale = {"Centimeter", "Meter", "Feet", "Inch"};
+    private static final int MAX_DIGITS_BEFORE_DECIMAL = 3;
+    private static final int MAX_DIGITS_AFTER_DECIMAL = 2;
+    private static final int ONE = 1;
 
     private boolean isUserInteracted;
     private boolean isHeightEntryClickedFirstTime;
     private boolean isWeightEntryClickedFirstTime;
+
+    ActivityMainBinding mBinding;
+    String[] weightScale = getResources().getStringArray(R.array.Weight);
+    String[] heightScale = getResources().getStringArray(R.array.Height);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +124,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.btn_0:
             case R.id.btn_1:
             case R.id.btn_2:
             case R.id.btn_3:
@@ -173,14 +177,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     mBinding.resultView.setVisibility(View.VISIBLE);
                     mBinding.numpadView.setVisibility(View.GONE);
-                    String formattedString = format(Locale.getDefault(),"%.01f", bmiValue);
+                    String formattedString = format(Locale.getDefault(), "%.01f", bmiValue);
                     mBinding.resultText.setText(formattedString);
                     showBmiStatus(bmiValue);
                 }
-                break;
-            }
-            case R.id.btn_0: {
-                onClickNumberZero();
                 break;
             }
             case R.id.btn_decimal: {
@@ -214,31 +214,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         float heightInCentimeter = (float) 0.0;
         switch (mBinding.heightScaleView.getText().toString()) {
             case METER: {
-
+                float heightInMeters = Float.parseFloat((String) mBinding.heightEntry.getText());
+                heightInCentimeter = heightInMeters * HUNDRED;
+                break;
             }
-        }
-        if (mBinding.heightScaleView.getText().equals(METER)) {
-            float heightInMeters = Float.parseFloat((String) mBinding.heightEntry.getText());
-            heightInCentimeter = heightInMeters * HUNDRED;
-        } else if (mBinding.heightScaleView.getText().equals(FEET)) {
-            float heightInFeet = Float.parseFloat((String) mBinding.heightEntry.getText());
-            heightInCentimeter = (float) (heightInFeet / DEFAULT_FEET_IN_CENTIMETER);
-        } else if (mBinding.heightScaleView.getText().equals(INCH)) {
-            float heightInInch = Float.parseFloat((String) mBinding.heightEntry.getText());
-            heightInCentimeter = (float) (heightInInch / DEFAULT_INCH_TO_CENTIMETER);
-        } else if (mBinding.heightScaleView.getText().equals(CENTIMETER)) {
-            heightInCentimeter = Float.parseFloat((String) mBinding.heightEntry.getText());
+            case FEET: {
+                float heightInFeet = Float.parseFloat((String) mBinding.heightEntry.getText());
+                heightInCentimeter = (float) (heightInFeet / DEFAULT_FEET_IN_CENTIMETER);
+                break;
+            }
+            case INCH: {
+                float heightInInch = Float.parseFloat((String) mBinding.heightEntry.getText());
+                heightInCentimeter = (float) (heightInInch / DEFAULT_INCH_TO_CENTIMETER);
+                break;
+            }
+            case CENTIMETER: {
+                heightInCentimeter = Float.parseFloat((String) mBinding.heightEntry.getText());
+                break;
+            }
         }
         return heightInCentimeter;
     }
 
     private float performWeightConversion() {
         float weightInKilos = (float) 0.0;
-        if (mBinding.weightScaleView.getText().equals(KILOGRAM)) {
-            weightInKilos = Float.parseFloat((String) mBinding.weightEntry.getText());
-        } else if (mBinding.weightScaleView.getText().equals(POUND)) {
-            float weightInPounds = Float.parseFloat((String) mBinding.weightEntry.getText());
-            weightInKilos = (float) (weightInPounds * DEFAULT_POUNDS_IN_KILOS);
+        switch (mBinding.weightScaleView.getText().toString()) {
+            case KILOGRAM: {
+                weightInKilos = Float.parseFloat((String) mBinding.weightEntry.getText());
+                break;
+            }
+            case POUND: {
+                float weightInPounds = Float.parseFloat((String) mBinding.weightEntry.getText());
+                weightInKilos = (float) (weightInPounds * DEFAULT_POUNDS_IN_KILOS);
+                break;
+            }
         }
         return weightInKilos;
     }
@@ -250,35 +259,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @SuppressLint("SetTextI18n")
     public void onClickNumber(String number) {
         if (isHeightEntryActive()) {
-            String previousNumber = (String) mBinding.heightEntry.getText();
-            if (previousNumber.equals(ZERO) || previousNumber.equals("") || isHeightEntryClickedFirstTime) {
-                isHeightEntryClickedFirstTime = false;
-                mBinding.heightEntry.setText(number);
-            } else if (previousNumber.contains(DECIMAL)) {
-                int indexOfDecimal = previousNumber.indexOf(DECIMAL);
-                String subString = previousNumber.substring(indexOfDecimal);
-                if (subString.length() <= 2) {
-                    mBinding.heightEntry.setText(previousNumber + number);
-                }
-            } else if (previousNumber.length() < 3) {
-                mBinding.heightEntry.setText(previousNumber + number);
-            }
-        }
-
-        if (isWeightEntryActive()) {
-            String previousNumber = (String) mBinding.weightEntry.getText();
-            if (previousNumber.equals(ZERO) || previousNumber.equals("") || isWeightEntryClickedFirstTime) {
-                isWeightEntryClickedFirstTime = false;
-                mBinding.weightEntry.setText(number);
-            } else if (previousNumber.contains(DECIMAL)) {
-                int indexOfDecimal = previousNumber.indexOf(DECIMAL);
-                String subString = previousNumber.substring(indexOfDecimal);
-                if (subString.length() <= 2) {
-                    mBinding.weightEntry.setText(previousNumber + number);
-                }
-            } else if (previousNumber.length() < 3) {
-                mBinding.weightEntry.setText(previousNumber + number);
-            }
+            isHeightEntryClickedFirstTime = performActionOn(mBinding.heightEntry, number, isHeightEntryClickedFirstTime);
+        } else {
+            isWeightEntryClickedFirstTime = performActionOn(mBinding.weightEntry, number, isWeightEntryClickedFirstTime);
         }
     }
 
@@ -301,7 +284,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onBackSpaceClicked() {
         if (isHeightEntryActive()) {
             String previousNumber = (String) mBinding.heightEntry.getText();
-            if (previousNumber.length() > 1) {
+            if (previousNumber.length() > ONE) {
                 String numberAfterBackspace = previousNumber.substring(0, previousNumber.length() - 1);
                 mBinding.heightEntry.setText(numberAfterBackspace);
             } else {
@@ -310,7 +293,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (isWeightEntryActive()) {
             String previousNumber = (String) mBinding.weightEntry.getText();
-            if (previousNumber.length() > 1) {
+            if (previousNumber.length() > ONE) {
                 String numberAfterBackspace = previousNumber.substring(0, previousNumber.length() - 1);
                 mBinding.weightEntry.setText(numberAfterBackspace);
             } else {
@@ -320,42 +303,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @SuppressLint("SetTextI18n")
-    public void onClickNumberZero() {
-        String previousNumber = (String) mBinding.heightEntry.getText();
-        if (isHeightEntryActive()) {
-            if (mBinding.heightEntry.getText() == ZERO || mBinding.heightEntry.getText() == "" || isHeightEntryClickedFirstTime) {
-                isHeightEntryClickedFirstTime = false;
-                mBinding.heightEntry.setText(ZERO);
-            } else if (previousNumber.contains(DECIMAL)) {
-                int indexOfDecimal = previousNumber.indexOf(DECIMAL);
-                String subString = previousNumber.substring(indexOfDecimal);
-                if (subString.length() <= 2) {
-                    mBinding.heightEntry.setText(previousNumber + ZERO);
-                }
-            } else if (mBinding.heightEntry.getText().length() < 3) {
-                String previousNum = (String) mBinding.heightEntry.getText();
-                mBinding.heightEntry.setText(previousNum + ZERO);
+    public boolean performActionOn(TextView view, String number, boolean isTextViewClickedFirstTime) {
+        String previousNumber = (String) view.getText();
+        if (view.getText() == ZERO || view.getText() == "" || isTextViewClickedFirstTime) {
+            isTextViewClickedFirstTime = false;
+            view.setText(number);
+        } else if (previousNumber.contains(DECIMAL)) {
+            int indexOfDecimal = previousNumber.indexOf(DECIMAL);
+            String subString = previousNumber.substring(indexOfDecimal);
+            if (subString.length() <= MAX_DIGITS_AFTER_DECIMAL) {
+                view.setText(previousNumber + number);
             }
+        } else if (view.getText().length() < MAX_DIGITS_BEFORE_DECIMAL) {
+            String previousNum = (String) view.getText();
+            view.setText(previousNum + number);
         }
-        if (isWeightEntryActive()) {
-            if (mBinding.weightEntry.getText() == ZERO || mBinding.weightEntry.getText() == "" || isWeightEntryClickedFirstTime) {
-                isWeightEntryClickedFirstTime = false;
-                mBinding.weightEntry.setText(ZERO);
-            } else if (previousNumber.contains(DECIMAL)) {
-                int indexOfDecimal = previousNumber.indexOf(DECIMAL);
-                String subString = previousNumber.substring(indexOfDecimal);
-                if (subString.length() <= 2) {
-                    mBinding.weightEntry.setText(previousNumber + ZERO);
-                }
-            } else if (mBinding.weightEntry.getText().length() < 3) {
-                String previousNum = (String) mBinding.weightEntry.getText();
-                mBinding.weightEntry.setText(previousNum + ZERO);
-            }
-        }
-    }
-
-    public void update(TextView view) {
-
+        return isTextViewClickedFirstTime;
     }
 
     public void showBmiStatus(float bmiValue) {
